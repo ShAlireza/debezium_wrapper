@@ -1,0 +1,1461 @@
+10/26/2021 10:31:24 AM  Started server process [18]
+10/26/2021 10:31:24 AM  Waiting for application startup.
+10/26/2021 10:31:24 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f4d1c74d400>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:31:24 AM  Application startup complete.
+10/26/2021 10:31:24 AM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 10:32:37 AM  Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/protocols/http/h11_impl.py", line 369, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/middleware/proxy_headers.py", line 59, in __call__
+    return await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 201, in app
+    raw_response = await run_endpoint_function(
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 148, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/app/./routers/debezium.py", line 47, in get_kafka_connects
+    kafka_connects = await KafkaConnectList.from_queryset(
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/contrib/pydantic/base.py", line 139, in from_queryset
+    __root__=[submodel.from_orm(e) for e in await queryset.prefetch_related(*fetch_fields)]
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/queryset.py", line 879, in _execute
+    instance_list = await self._db.executor_class(
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/base/executor.py", line 159, in execute_select
+    await self._execute_prefetch_queries(instance_list)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/base/executor.py", line 559, in _execute_prefetch_queries
+    await asyncio.gather(*prefetch_tasks)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/base/executor.py", line 541, in _do_prefetch
+    return await self._prefetch_reverse_relation(instance_id_list, field, related_query)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/base/executor.py", line 340, in _prefetch_reverse_relation
+    related_object_list = await related_query.filter(
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/queryset.py", line 879, in _execute
+    instance_list = await self._db.executor_class(
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/base/executor.py", line 124, in execute_select
+    _, raw_results = await self.db.execute_query(query.get_sql())
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 38, in translate_exceptions_
+    raise OperationalError(exc)
+tortoise.exceptions.OperationalError: column "config" does not exist
+10/26/2021 10:39:51 AM  Started server process [16]
+10/26/2021 10:39:51 AM  Waiting for application startup.
+10/26/2021 10:39:51 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7fbd12d673d0>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:39:51 AM  Application startup complete.
+10/26/2021 10:39:51 AM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 10:41:02 AM  ================ Started Job ================
+10/26/2021 10:41:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:41:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:41:02 AM  ================ Finished Job ================
+
+
+10/26/2021 10:42:01 AM  ================ Started Job ================
+10/26/2021 10:42:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:42:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:42:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:43:01 AM  ================ Started Job ================
+10/26/2021 10:43:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:43:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:43:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:44:02 AM  ================ Started Job ================
+10/26/2021 10:44:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:44:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:44:02 AM  ================ Finished Job ================
+
+
+10/26/2021 10:44:40 AM  Started server process [16]
+10/26/2021 10:44:40 AM  Waiting for application startup.
+10/26/2021 10:44:40 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f9c04825460>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:44:41 AM  Application startup complete.
+10/26/2021 10:44:41 AM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 10:45:01 AM  ================ Started Job ================
+10/26/2021 10:45:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:45:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:45:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:45:26 AM  Started server process [17]
+10/26/2021 10:45:26 AM  Waiting for application startup.
+10/26/2021 10:45:26 AM  Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 540, in lifespan
+    async for item in self.lifespan_context(app):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 481, in default_lifespan
+    await self.startup()
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 516, in startup
+    await handler()
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/contrib/fastapi/__init__.py", line 93, in init_orm
+    await Tortoise.init(config=config, config_file=config_file, db_url=db_url, modules=modules)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 598, in init
+    await cls._init_connections(connections_config, _create_db)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 390, in _init_connections
+    await connection.create_connection(with_db=True)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 94, in create_connection
+    self._pool = await asyncpg.create_pool(None, password=self.password, **self._template)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 407, in _async__init__
+    await self._initialize()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 435, in _initialize
+    await first_ch.connect()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 127, in connect
+    self._con = await self._pool._get_new_connection()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 477, in _get_new_connection
+    con = await connection.connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1981, in connect
+    return await connect_utils._connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 748, in _connect
+    raise last_error
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 732, in _connect
+    con = await _connect_addr(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 632, in _connect_addr
+    return await __connect_addr(params, timeout, True, *args)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 676, in __connect_addr
+    tr, pr = await compat.wait_for(connector, timeout=timeout)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/compat.py", line 103, in wait_for
+    return await asyncio.wait_for(fut, timeout)
+  File "/usr/lib/python3.8/asyncio/tasks.py", line 494, in wait_for
+    return fut.result()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 542, in _create_ssl_connection
+    tr, pr = await loop.create_connection(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1025, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1010, in create_connection
+    sock = await self._connect_sock(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 924, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 496, in sock_connect
+    return await fut
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 528, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('172.26.0.2', 5432)
+
+10/26/2021 10:45:26 AM  Application startup failed. Exiting.
+10/26/2021 10:45:28 AM  Started server process [17]
+10/26/2021 10:45:28 AM  Waiting for application startup.
+10/26/2021 10:45:28 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7fac4ce8f460>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:45:28 AM  Application startup complete.
+10/26/2021 10:45:28 AM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 10:46:02 AM  ================ Started Job ================
+10/26/2021 10:46:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:46:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:46:02 AM  ================ Finished Job ================
+
+
+10/26/2021 10:47:01 AM  ================ Started Job ================
+10/26/2021 10:47:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:47:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:47:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:48:09 AM  Started server process [16]
+10/26/2021 10:48:09 AM  Waiting for application startup.
+10/26/2021 10:48:09 AM  Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 540, in lifespan
+    async for item in self.lifespan_context(app):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 481, in default_lifespan
+    await self.startup()
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 516, in startup
+    await handler()
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/contrib/fastapi/__init__.py", line 93, in init_orm
+    await Tortoise.init(config=config, config_file=config_file, db_url=db_url, modules=modules)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 598, in init
+    await cls._init_connections(connections_config, _create_db)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 390, in _init_connections
+    await connection.create_connection(with_db=True)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 94, in create_connection
+    self._pool = await asyncpg.create_pool(None, password=self.password, **self._template)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 407, in _async__init__
+    await self._initialize()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 435, in _initialize
+    await first_ch.connect()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 127, in connect
+    self._con = await self._pool._get_new_connection()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 477, in _get_new_connection
+    con = await connection.connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1981, in connect
+    return await connect_utils._connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 748, in _connect
+    raise last_error
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 732, in _connect
+    con = await _connect_addr(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 632, in _connect_addr
+    return await __connect_addr(params, timeout, True, *args)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 676, in __connect_addr
+    tr, pr = await compat.wait_for(connector, timeout=timeout)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/compat.py", line 103, in wait_for
+    return await asyncio.wait_for(fut, timeout)
+  File "/usr/lib/python3.8/asyncio/tasks.py", line 494, in wait_for
+    return fut.result()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 542, in _create_ssl_connection
+    tr, pr = await loop.create_connection(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1025, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1010, in create_connection
+    sock = await self._connect_sock(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 924, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 496, in sock_connect
+    return await fut
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 528, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('172.27.0.2', 5432)
+
+10/26/2021 10:48:09 AM  Application startup failed. Exiting.
+10/26/2021 10:48:11 AM  Started server process [16]
+10/26/2021 10:48:11 AM  Waiting for application startup.
+10/26/2021 10:48:11 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f866e54e490>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:48:11 AM  Application startup complete.
+10/26/2021 10:48:11 AM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 10:50:01 AM  ================ Started Job ================
+10/26/2021 10:50:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:50:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:50:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:50:01 AM  Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/protocols/http/h11_impl.py", line 369, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/middleware/proxy_headers.py", line 59, in __call__
+    return await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 201, in app
+    raw_response = await run_endpoint_function(
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 148, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/app/./routers/debezium.py", line 97, in check
+    await handler.notify()
+  File "/app/./internal/debezium_handler.py", line 130, in notify
+    await slack_handler.send_message(
+  File "/app/./internal/slack_handler.py", line 19, in send_message
+    await slack_client.chat_postMessage(**payload)
+TypeError: chat_postMessage() argument after ** must be a mapping, not coroutine
+10/26/2021 10:50:49 AM  Started server process [16]
+10/26/2021 10:50:49 AM  Waiting for application startup.
+10/26/2021 10:50:49 AM  Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 540, in lifespan
+    async for item in self.lifespan_context(app):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 481, in default_lifespan
+    await self.startup()
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 516, in startup
+    await handler()
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/contrib/fastapi/__init__.py", line 93, in init_orm
+    await Tortoise.init(config=config, config_file=config_file, db_url=db_url, modules=modules)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 598, in init
+    await cls._init_connections(connections_config, _create_db)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 390, in _init_connections
+    await connection.create_connection(with_db=True)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 94, in create_connection
+    self._pool = await asyncpg.create_pool(None, password=self.password, **self._template)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 407, in _async__init__
+    await self._initialize()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 435, in _initialize
+    await first_ch.connect()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 127, in connect
+    self._con = await self._pool._get_new_connection()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 477, in _get_new_connection
+    con = await connection.connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1981, in connect
+    return await connect_utils._connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 748, in _connect
+    raise last_error
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 732, in _connect
+    con = await _connect_addr(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 632, in _connect_addr
+    return await __connect_addr(params, timeout, True, *args)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 676, in __connect_addr
+    tr, pr = await compat.wait_for(connector, timeout=timeout)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/compat.py", line 103, in wait_for
+    return await asyncio.wait_for(fut, timeout)
+  File "/usr/lib/python3.8/asyncio/tasks.py", line 494, in wait_for
+    return fut.result()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 542, in _create_ssl_connection
+    tr, pr = await loop.create_connection(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1025, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1010, in create_connection
+    sock = await self._connect_sock(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 924, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 496, in sock_connect
+    return await fut
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 528, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('172.28.0.2', 5432)
+
+10/26/2021 10:50:49 AM  Application startup failed. Exiting.
+10/26/2021 10:50:50 AM  Started server process [17]
+10/26/2021 10:50:50 AM  Waiting for application startup.
+10/26/2021 10:50:50 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f22ed18d4f0>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:50:51 AM  Application startup complete.
+10/26/2021 10:50:51 AM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 10:52:01 AM  ================ Started Job ================
+10/26/2021 10:52:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:52:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:52:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:52:01 AM  Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/protocols/http/h11_impl.py", line 369, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/middleware/proxy_headers.py", line 59, in __call__
+    return await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 201, in app
+    raw_response = await run_endpoint_function(
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 148, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/app/./routers/debezium.py", line 97, in check
+    await handler.notify()
+  File "/app/./internal/debezium_handler.py", line 130, in notify
+    await slack_handler.send_message(
+  File "/app/./internal/slack_handler.py", line 19, in send_message
+    await slack_client.chat_postMessage(**payload)
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_client.py", line 1988, in chat_postMessage
+    return await self.api_call("chat.postMessage", json=kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_base_client.py", line 144, in api_call
+    return await self._send(
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_base_client.py", line 175, in _send
+    res = await self._request(
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_base_client.py", line 195, in _request
+    return await _request_with_session(
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_internal_utils.py", line 205, in _request_with_session
+    raise last_error
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_internal_utils.py", line 113, in _request_with_session
+    async with session.request(http_verb, api_url, **req_args) as res:
+  File "/usr/local/lib/python3.8/dist-packages/aiohttp/client.py", line 1117, in __aenter__
+    self._resp = await self._coro
+  File "/usr/local/lib/python3.8/dist-packages/aiohttp/client.py", line 390, in _request
+    data = payload.JsonPayload(json, dumps=self._json_serialize)
+  File "/usr/local/lib/python3.8/dist-packages/aiohttp/payload.py", line 381, in __init__
+    dumps(value).encode(encoding),
+  File "/usr/lib/python3.8/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib/python3.8/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.8/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/lib/python3.8/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type coroutine is not JSON serializable
+10/26/2021 10:53:09 AM  Started server process [16]
+10/26/2021 10:53:09 AM  Waiting for application startup.
+10/26/2021 10:53:09 AM  Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 540, in lifespan
+    async for item in self.lifespan_context(app):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 481, in default_lifespan
+    await self.startup()
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 516, in startup
+    await handler()
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/contrib/fastapi/__init__.py", line 93, in init_orm
+    await Tortoise.init(config=config, config_file=config_file, db_url=db_url, modules=modules)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 598, in init
+    await cls._init_connections(connections_config, _create_db)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 390, in _init_connections
+    await connection.create_connection(with_db=True)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 94, in create_connection
+    self._pool = await asyncpg.create_pool(None, password=self.password, **self._template)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 407, in _async__init__
+    await self._initialize()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 435, in _initialize
+    await first_ch.connect()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 127, in connect
+    self._con = await self._pool._get_new_connection()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 477, in _get_new_connection
+    con = await connection.connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1981, in connect
+    return await connect_utils._connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 748, in _connect
+    raise last_error
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 732, in _connect
+    con = await _connect_addr(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 632, in _connect_addr
+    return await __connect_addr(params, timeout, True, *args)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 676, in __connect_addr
+    tr, pr = await compat.wait_for(connector, timeout=timeout)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/compat.py", line 103, in wait_for
+    return await asyncio.wait_for(fut, timeout)
+  File "/usr/lib/python3.8/asyncio/tasks.py", line 494, in wait_for
+    return fut.result()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 542, in _create_ssl_connection
+    tr, pr = await loop.create_connection(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1025, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1010, in create_connection
+    sock = await self._connect_sock(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 924, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 496, in sock_connect
+    return await fut
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 528, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('172.29.0.2', 5432)
+
+10/26/2021 10:53:09 AM  Application startup failed. Exiting.
+10/26/2021 10:53:11 AM  Started server process [16]
+10/26/2021 10:53:11 AM  Waiting for application startup.
+10/26/2021 10:53:12 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f880193e430>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:53:12 AM  Application startup complete.
+10/26/2021 10:53:12 AM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 10:54:01 AM  ================ Started Job ================
+10/26/2021 10:54:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:54:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:54:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:54:02 AM  Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/protocols/http/h11_impl.py", line 369, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/middleware/proxy_headers.py", line 59, in __call__
+    return await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 201, in app
+    raw_response = await run_endpoint_function(
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 148, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/app/./routers/debezium.py", line 97, in check
+    await handler.notify()
+  File "/app/./internal/debezium_handler.py", line 130, in notify
+    await slack_handler.send_message(
+  File "/app/./internal/slack_handler.py", line 19, in send_message
+    await slack_client.chat_postMessage(**payload)
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_client.py", line 1988, in chat_postMessage
+    return await self.api_call("chat.postMessage", json=kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_base_client.py", line 144, in api_call
+    return await self._send(
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_base_client.py", line 188, in _send
+    return AsyncSlackResponse(**{**data, **res}).validate()
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_slack_response.py", line 208, in validate
+    raise e.SlackApiError(message=msg, response=self)
+slack_sdk.errors.SlackApiError: The request to the Slack API failed. (url: https://www.slack.com/api/chat.postMessage)
+The server responded with: {'ok': False, 'error': 'invalid_blocks_format'}
+10/26/2021 10:55:01 AM  ================ Started Job ================
+10/26/2021 10:55:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:55:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:55:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:56:01 AM  ================ Started Job ================
+10/26/2021 10:56:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:56:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:56:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:57:02 AM  ================ Started Job ================
+10/26/2021 10:57:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:57:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:57:02 AM  ================ Finished Job ================
+
+
+10/26/2021 10:57:46 AM  Started server process [17]
+10/26/2021 10:57:46 AM  Waiting for application startup.
+10/26/2021 10:57:46 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f24660f6370>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:57:46 AM  Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 36, in translate_exceptions_
+    return await func(self, *args)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 176, in execute_query
+    rows = await connection.fetch(*params)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 583, in fetch
+    return await self._execute(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1625, in _execute
+    result, _ = await self.__execute(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1650, in __execute
+    return await self._do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1677, in _do_execute
+    stmt = await self._get_statement(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 375, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg/protocol/protocol.pyx", line 168, in prepare
+asyncpg.exceptions.UndefinedTableError: relation "debezium_wrapper.cronjob" does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 540, in lifespan
+    async for item in self.lifespan_context(app):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 481, in default_lifespan
+    await self.startup()
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 516, in startup
+    await handler()
+  File "/app/./main.py", line 20, in init_cron_jobs
+    cron_jobs = await CronJobModel.all()
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/queryset.py", line 879, in _execute
+    instance_list = await self._db.executor_class(
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/base/executor.py", line 124, in execute_select
+    _, raw_results = await self.db.execute_query(query.get_sql())
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 38, in translate_exceptions_
+    raise OperationalError(exc)
+tortoise.exceptions.OperationalError: relation "debezium_wrapper.cronjob" does not exist
+
+10/26/2021 10:57:46 AM  Application startup failed. Exiting.
+10/26/2021 10:57:48 AM  Started server process [16]
+10/26/2021 10:57:48 AM  Waiting for application startup.
+10/26/2021 10:57:48 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f8ded0633d0>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:57:48 AM  Application startup complete.
+10/26/2021 10:57:48 AM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 10:58:01 AM  ================ Started Job ================
+10/26/2021 10:58:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:58:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 10:58:01 AM  ================ Finished Job ================
+
+
+10/26/2021 10:58:07 AM  Exception in ASGI application
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/protocols/http/h11_impl.py", line 369, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+  File "/usr/local/lib/python3.8/dist-packages/uvicorn/middleware/proxy_headers.py", line 59, in __call__
+    return await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/dist-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 201, in app
+    raw_response = await run_endpoint_function(
+  File "/usr/local/lib/python3.8/dist-packages/fastapi/routing.py", line 148, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/app/./routers/debezium.py", line 97, in check
+    await handler.notify()
+  File "/app/./internal/debezium_handler.py", line 130, in notify
+    await slack_handler.send_message(
+  File "/app/./internal/slack_handler.py", line 19, in send_message
+    await slack_client.chat_postMessage(**payload)
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_client.py", line 1988, in chat_postMessage
+    return await self.api_call("chat.postMessage", json=kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_base_client.py", line 144, in api_call
+    return await self._send(
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_base_client.py", line 188, in _send
+    return AsyncSlackResponse(**{**data, **res}).validate()
+  File "/usr/local/lib/python3.8/dist-packages/slack_sdk/web/async_slack_response.py", line 208, in validate
+    raise e.SlackApiError(message=msg, response=self)
+slack_sdk.errors.SlackApiError: The request to the Slack API failed. (url: https://www.slack.com/api/chat.postMessage)
+The server responded with: {'ok': False, 'error': 'invalid_blocks', 'errors': ['failed to match all allowed schemas [json-pointer:/blocks/0/text]', 'unsupported type: mrkdown [json-pointer:/blocks/0/text/type]', 'failed to match all allowed schemas [json-pointer:/blocks/2/text]', 'unsupported type: mrkdown [json-pointer:/blocks/2/text/type]', 'failed to match all allowed schemas [json-pointer:/blocks/4/text]', 'unsupported type: mrkdown [json-pointer:/blocks/4/text/type]'], 'response_metadata': {'messages': ['[ERROR] failed to match all allowed schemas [json-pointer:/blocks/0/text]', '[ERROR] unsupported type: mrkdown [json-pointer:/blocks/0/text/type]', '[ERROR] failed to match all allowed schemas [json-pointer:/blocks/2/text]', '[ERROR] unsupported type: mrkdown [json-pointer:/blocks/2/text/type]', '[ERROR] failed to match all allowed schemas [json-pointer:/blocks/4/text]', '[ERROR] unsupported type: mrkdown [json-pointer:/blocks/4/text/type]']}}
+10/26/2021 10:59:05 AM  Started server process [16]
+10/26/2021 10:59:05 AM  Waiting for application startup.
+10/26/2021 10:59:05 AM  Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 540, in lifespan
+    async for item in self.lifespan_context(app):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 481, in default_lifespan
+    await self.startup()
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 516, in startup
+    await handler()
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/contrib/fastapi/__init__.py", line 93, in init_orm
+    await Tortoise.init(config=config, config_file=config_file, db_url=db_url, modules=modules)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 598, in init
+    await cls._init_connections(connections_config, _create_db)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/__init__.py", line 390, in _init_connections
+    await connection.create_connection(with_db=True)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 94, in create_connection
+    self._pool = await asyncpg.create_pool(None, password=self.password, **self._template)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 407, in _async__init__
+    await self._initialize()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 435, in _initialize
+    await first_ch.connect()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 127, in connect
+    self._con = await self._pool._get_new_connection()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/pool.py", line 477, in _get_new_connection
+    con = await connection.connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1981, in connect
+    return await connect_utils._connect(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 748, in _connect
+    raise last_error
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 732, in _connect
+    con = await _connect_addr(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 632, in _connect_addr
+    return await __connect_addr(params, timeout, True, *args)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 676, in __connect_addr
+    tr, pr = await compat.wait_for(connector, timeout=timeout)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/compat.py", line 103, in wait_for
+    return await asyncio.wait_for(fut, timeout)
+  File "/usr/lib/python3.8/asyncio/tasks.py", line 494, in wait_for
+    return fut.result()
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connect_utils.py", line 542, in _create_ssl_connection
+    tr, pr = await loop.create_connection(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1025, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 1010, in create_connection
+    sock = await self._connect_sock(
+  File "/usr/lib/python3.8/asyncio/base_events.py", line 924, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 496, in sock_connect
+    return await fut
+  File "/usr/lib/python3.8/asyncio/selector_events.py", line 528, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('192.168.32.2', 5432)
+
+10/26/2021 10:59:05 AM  Application startup failed. Exiting.
+10/26/2021 10:59:08 AM  Started server process [16]
+10/26/2021 10:59:08 AM  Waiting for application startup.
+10/26/2021 10:59:08 AM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7fb38449c430>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 10:59:08 AM  Application startup complete.
+10/26/2021 10:59:08 AM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 11:00:01 AM  ================ Started Job ================
+10/26/2021 11:00:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:00:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:00:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:01:01 AM  ================ Started Job ================
+10/26/2021 11:01:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:01:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:01:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:02:01 AM  ================ Started Job ================
+10/26/2021 11:02:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:02:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:02:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:03:02 AM  ================ Started Job ================
+10/26/2021 11:03:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:03:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:03:02 AM  ================ Finished Job ================
+
+
+10/26/2021 11:04:01 AM  ================ Started Job ================
+10/26/2021 11:04:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:04:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:04:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:05:01 AM  ================ Started Job ================
+10/26/2021 11:05:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:05:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:05:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:06:01 AM  ================ Started Job ================
+10/26/2021 11:06:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:06:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:06:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:07:01 AM  ================ Started Job ================
+10/26/2021 11:07:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:07:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:07:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:08:01 AM  ================ Started Job ================
+10/26/2021 11:08:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:08:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:08:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:09:02 AM  ================ Started Job ================
+10/26/2021 11:09:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:09:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:09:02 AM  ================ Finished Job ================
+
+
+10/26/2021 11:10:01 AM  ================ Started Job ================
+10/26/2021 11:10:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:10:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:10:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:11:01 AM  ================ Started Job ================
+10/26/2021 11:11:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:11:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:11:01 AM  ================ Finished Job ================
+
+
+10/26/2021 11:12:01 AM  ================ Started Job ================
+10/26/2021 11:12:01 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:12:02 AM  +---------------------------------------+-----------+----------------+
+|             ConnectorName             | Connector |     Tasks      |
++---------------------------------------+-----------+----------------+
+| digikala-mysql-product-variants-table |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-products-table     |  RUNNING  | Task0: RUNNING |
+|    digikala-mysql-categories-table    |  RUNNING  | Task0: RUNNING |
+|  digikala-mysql-category-tree-table   |  RUNNING  | Task0: RUNNING |
++---------------------------------------+-----------+----------------+
+10/26/2021 11:12:02 AM  ================ Finished Job ================
+
+
+10/26/2021 12:57:31 PM  Started server process [17]
+10/26/2021 12:57:31 PM  Waiting for application startup.
+10/26/2021 12:57:31 PM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f20db613430>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 12:57:31 PM  Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 36, in translate_exceptions_
+    return await func(self, *args)
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 176, in execute_query
+    rows = await connection.fetch(*params)
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 583, in fetch
+    return await self._execute(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1625, in _execute
+    result, _ = await self.__execute(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1650, in __execute
+    return await self._do_execute(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 1677, in _do_execute
+    stmt = await self._get_statement(
+  File "/usr/local/lib/python3.8/dist-packages/asyncpg/connection.py", line 375, in _get_statement
+    statement = await self._protocol.prepare(
+  File "asyncpg/protocol/protocol.pyx", line 168, in prepare
+asyncpg.exceptions.UndefinedTableError: relation "debezium_wrapper.cronjob" does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 540, in lifespan
+    async for item in self.lifespan_context(app):
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 481, in default_lifespan
+    await self.startup()
+  File "/usr/local/lib/python3.8/dist-packages/starlette/routing.py", line 516, in startup
+    await handler()
+  File "/app/./main.py", line 20, in init_cron_jobs
+    cron_jobs = await CronJobModel.all()
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/queryset.py", line 879, in _execute
+    instance_list = await self._db.executor_class(
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/base/executor.py", line 124, in execute_select
+    _, raw_results = await self.db.execute_query(query.get_sql())
+  File "/usr/local/lib/python3.8/dist-packages/tortoise/backends/asyncpg/client.py", line 38, in translate_exceptions_
+    raise OperationalError(exc)
+tortoise.exceptions.OperationalError: relation "debezium_wrapper.cronjob" does not exist
+
+10/26/2021 12:57:31 PM  Application startup failed. Exiting.
+10/26/2021 12:57:34 PM  Started server process [17]
+10/26/2021 12:57:34 PM  Waiting for application startup.
+10/26/2021 12:57:34 PM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f73098b44c0>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 12:57:34 PM  Application startup complete.
+10/26/2021 12:57:34 PM  Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+10/26/2021 12:58:01 PM  ================ Started Job ================
+10/26/2021 12:58:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 12:58:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 12:58:01 PM  ================ Finished Job ================
+
+
+10/26/2021 12:59:02 PM  ================ Started Job ================
+10/26/2021 12:59:02 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 12:59:02 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 12:59:02 PM  ================ Finished Job ================
+
+
+10/26/2021 01:00:01 PM  ================ Started Job ================
+10/26/2021 01:00:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:00:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:00:01 PM  ================ Finished Job ================
+
+
+10/26/2021 01:01:01 PM  ================ Started Job ================
+10/26/2021 01:01:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:01:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:01:01 PM  ================ Finished Job ================
+
+
+10/26/2021 01:02:02 PM  ================ Started Job ================
+10/26/2021 01:02:02 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:02:02 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:02:02 PM  ================ Finished Job ================
+
+
+10/26/2021 01:03:01 PM  ================ Started Job ================
+10/26/2021 01:03:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:03:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:03:01 PM  ================ Finished Job ================
+
+
+10/26/2021 01:04:01 PM  ================ Started Job ================
+10/26/2021 01:04:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:04:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:04:01 PM  ================ Finished Job ================
+
+
+10/26/2021 01:05:02 PM  ================ Started Job ================
+10/26/2021 01:05:02 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:05:02 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:05:02 PM  ================ Finished Job ================
+
+
+10/26/2021 01:06:01 PM  ================ Started Job ================
+10/26/2021 01:06:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:06:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:06:01 PM  ================ Finished Job ================
+
+
+10/26/2021 01:07:01 PM  ================ Started Job ================
+10/26/2021 01:07:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:07:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:07:01 PM  ================ Finished Job ================
+
+
+10/26/2021 01:08:01 PM  ================ Started Job ================
+10/26/2021 01:08:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:08:02 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:08:02 PM  ================ Finished Job ================
+
+
+10/26/2021 01:09:01 PM  ================ Started Job ================
+10/26/2021 01:09:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:09:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:09:01 PM  ================ Finished Job ================
+
+
+10/26/2021 01:10:01 PM  ================ Started Job ================
+10/26/2021 01:10:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:10:01 PM  +-----------------------------------------+-----------+----------------+
+|              ConnectorName              | Connector |     Tasks      |
++-----------------------------------------+-----------+----------------+
+|  digikala-mysql-product-variants-table  |  RUNNING  | Task0: RUNNING |
+|      digikala-mysql-products-table      |  RUNNING  | Task0: RUNNING |
+|     digikala-mysql-categories-table     |  RUNNING  | Task0: RUNNING |
+|   digikala-mysql-category-tree-table    |  RUNNING  | Task0: RUNNING |
+| digikala-mysql-orders-table-incremental |  RUNNING  | Task0: RUNNING |
++-----------------------------------------+-----------+----------------+
+10/26/2021 01:10:01 PM  ================ Finished Job ================
+
+

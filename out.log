@@ -1,0 +1,10 @@
+10/26/2021 01:59:17 PM  Started server process [3999720]
+10/26/2021 01:59:17 PM  Waiting for application startup.
+10/26/2021 01:59:17 PM  Tortoise-ORM started, {'default': <tortoise.backends.asyncpg.client.AsyncpgDBClient object at 0x7f762205bbb0>}, {'debezium_wrapper': {'ConnectorModel': <class 'data.db.models.ConnectorModel'>, 'CronJobModel': <class 'data.db.models.CronJobModel'>, 'KafkaConnectModel': <class 'data.db.models.KafkaConnectModel'>, 'StatusAttemptModel': <class 'data.db.models.StatusAttemptModel'>, 'TaskModel': <class 'data.db.models.TaskModel'>}}
+10/26/2021 01:59:17 PM  Application startup complete.
+10/26/2021 01:59:22 PM  Shutting down
+10/26/2021 01:59:22 PM  Waiting for application shutdown.
+10/26/2021 01:59:22 PM  Tortoise-ORM shutdown
+10/26/2021 01:59:22 PM  Tortoise-ORM shutdown
+10/26/2021 01:59:22 PM  Application shutdown complete.
+10/26/2021 01:59:22 PM  Finished server process [3999720]

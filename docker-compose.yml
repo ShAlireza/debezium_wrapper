@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  scheduler:
+    build: .
+    ports:
+      - "8888:8000"
+    environment:
+      SCHEDULER_USER: "root"
+      PYTHONPATH: "/app"
+      DATABASE_URL: "postgres://postgres:postgres@postgres:5432/bo"
+      LOG_FILE: "/var/log/scheduler.log"
+      SLACK_BOT_TOKEN: "xoxb-203388022759-2660303451089-U94h5bM7tREn21azCauUaJ7Z"
+      SLACK_CHANNEL: "#bigdata_debezium"
+    volumes:
+      - ./scheduler.log:/var/log/scheduler.log
+    depends_on:
+      - postgres
+    command: >
+      sh -c "
+      #        aerich init-db;
+        aerich upgrade;
+        service cron start;
+        uvicorn main:app --port 8000 --host 0.0.0.0
+      "
+    restart: always
+
+  postgres:
+    restart: always
+    image: postgres:latest
+      #    volumes:
+      #      - pgdata:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=bo
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+volumes:
+  pgdata:
